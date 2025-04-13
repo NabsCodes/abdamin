@@ -15,12 +15,12 @@ import SEO from "../components/layout/SEO";
 import logo from "../assets/svg/Logo.svg";
 
 const services = [
-  { icon: <Briefcase />, name: "Construction" },
-  { icon: <Truck />, name: "Transportation" },
-  { icon: <Radio />, name: "Telecoms" },
-  { icon: <Users />, name: "Consults" },
-  { icon: <Sun />, name: "Solar Generation" },
-  { icon: <Droplet />, name: "Gauni Water" },
+  { icon: <Briefcase />, name: "Construction", to: "/services/construction" },
+  { icon: <Truck />, name: "Transportation", to: "/services/transportation" },
+  { icon: <Radio />, name: "Telecoms", to: "/services/telecoms" },
+  { icon: <Users />, name: "Consults", to: "/services/consults" },
+  { icon: <Sun />, name: "Solar Generation", to: "/services/solar-generation" },
+  { icon: <Droplet />, name: "Gauni Water", to: "/services/gauni-water" },
 ];
 
 const NotFound: React.FC = () => {
@@ -81,15 +81,18 @@ const NotFound: React.FC = () => {
             {services.map((service, index) => (
               <motion.div
                 key={service.name}
-                className="flex items-center rounded-full bg-gray-100 px-4 py-2 text-sm text-gray-700"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="flex items-center rounded-full bg-gray-100 px-4 py-2 text-sm text-gray-700 transition-all duration-300 hover:bg-gray-100/50"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 + index * 0.1 }}
               >
-                {service.icon}
-                <span className="ml-2">{service.name}</span>
+                <Link
+                  to={service.to}
+                  className="flex items-center text-gray-700 hover:text-primary-base"
+                >
+                  {service.icon}
+                  <span className="ml-2">{service.name}</span>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
@@ -101,14 +104,14 @@ const NotFound: React.FC = () => {
           >
             <Link
               to="/"
-              className="hover:bg-primary-dark group flex items-center justify-center rounded-full bg-primary-base px-6 py-3 text-white transition-all"
+              className="group flex items-center justify-center rounded-full bg-primary-base px-6 py-3 text-white transition-all duration-300 hover:bg-primary-base/90"
             >
               <Home className="mr-2 h-5 w-5" />
               <span>Return to Homepage</span>
             </Link>
             <Link
               to="/portfolio"
-              className="flex items-center justify-center rounded-full border-2 border-primary-base px-6 py-3 text-primary-base transition-all hover:bg-primary-base hover:text-white"
+              className="group flex items-center justify-center rounded-full border-2 border-primary-base px-6 py-3 text-primary-base transition-all duration-300 hover:bg-primary-base hover:text-white"
             >
               <Briefcase className="mr-2 h-5 w-5" />
               <span>View Our Projects</span>

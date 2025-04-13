@@ -7,24 +7,35 @@ function App(): JSX.Element {
   // State to control whether the preloader is shown
   const [loading, setLoading] = useState(true);
 
-  // Effect to simulate an initial loading period
+  // Effect to handle the preloader display
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000); // 3 seconds loading time
-    return () => clearTimeout(timer); // Cleanup timer on unmount
-  }, []);
+    if (loading) {
+      // Show branded preloader for a meaningful duration
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 2500); // 2.5s for the branded experience
+
+      return () => clearTimeout(timer); // Cleanup timer on unmount
+    }
+  }, [loading]);
+
+  // Handler for skipping the preloader
+  const handleSkip = () => {
+    setLoading(false);
+  };
 
   return (
     <AnimatePresence mode="wait">
       {loading ? (
         // Show the Preloader while loading
-        <Preloader key="preloader" />
+        <Preloader key="preloader" onSkip={handleSkip} />
       ) : (
         // Show the main app content after loading
         <motion.div
           key="router"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
         >
           <Router />
         </motion.div>

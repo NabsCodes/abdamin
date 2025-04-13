@@ -149,7 +149,8 @@ const wrapperVariants = {
     scaleY: 1,
     transition: {
       when: "beforeChildren",
-      staggerChildren: 0.1,
+      staggerChildren: 0.05, // Reduced from 0.1
+      duration: 0.2, // Added shorter duration
     },
   },
   closed: {
@@ -157,14 +158,21 @@ const wrapperVariants = {
     scaleY: 0,
     transition: {
       when: "afterChildren",
-      staggerChildren: 0.1,
+      staggerChildren: 0.03, // Reduced from 0.1
+      duration: 0.15, // Added shorter duration
     },
   },
 };
 
 const iconVariants = {
-  open: { rotate: 180 },
-  closed: { rotate: 0 },
+  open: {
+    rotate: 180,
+    transition: { duration: 0.2 }, // Added shorter duration
+  },
+  closed: {
+    rotate: 0,
+    transition: { duration: 0.2 }, // Added shorter duration
+  },
 };
 
 const itemVariants = {
@@ -173,6 +181,7 @@ const itemVariants = {
     y: 0,
     transition: {
       when: "beforeChildren",
+      duration: 0.15, // Added shorter duration
     },
   },
   closed: {
@@ -180,11 +189,20 @@ const itemVariants = {
     y: -15,
     transition: {
       when: "afterChildren",
+      duration: 0.15, // Added shorter duration
     },
   },
 };
 
 const actionIconVariants = {
-  open: { scale: 1, y: 0 },
-  closed: { scale: 0, y: -7 },
+  open: {
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.15 }, // Added shorter duration
+  },
+  closed: {
+    scale: 0,
+    y: -7,
+    transition: { duration: 0.1 }, // Added shorter duration
+  },
 };

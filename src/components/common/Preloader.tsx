@@ -7,6 +7,7 @@ import {
   BrainCircuit,
   Sun,
   Droplets,
+  X,
 } from "lucide-react";
 import logo from "../../assets/svg/Logo.svg";
 
@@ -20,9 +21,14 @@ const services = [
   { icon: Droplets, color: "text-cyan-500", name: "Gauni Water" },
 ];
 
-const Preloader: React.FC = () => {
+interface PreloaderProps {
+  onSkip?: () => void;
+}
+
+const Preloader: React.FC<PreloaderProps> = ({ onSkip }) => {
   // State to track loading progress
   const [progress, setProgress] = useState(0);
+  const [showSkip, setShowSkip] = useState(false);
 
   // Effect to simulate loading progress
   useEffect(() => {
@@ -32,7 +38,15 @@ const Preloader: React.FC = () => {
       );
     }, 30);
 
-    return () => clearInterval(timer);
+    // Show skip button after 1 second
+    const skipTimer = setTimeout(() => {
+      setShowSkip(true);
+    }, 500);
+
+    return () => {
+      clearInterval(timer);
+      clearTimeout(skipTimer);
+    };
   }, []);
 
   return (
@@ -41,8 +55,22 @@ const Preloader: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-primary-100 to-primary-80 p-4"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-white to-primary-10 p-4"
     >
+      {/* Skip button */}
+      {showSkip && onSkip && (
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.7 }}
+          whileHover={{ opacity: 1 }}
+          className="absolute right-4 top-4 flex items-center gap-1 rounded-md bg-primary-base/10 px-3 py-1 text-sm text-primary-base transition-colors hover:bg-primary-base/20"
+          onClick={onSkip}
+          aria-label="Skip intro animation"
+        >
+          Skip <X className="h-3 w-3" />
+        </motion.button>
+      )}
+
       {/* Logo with fade-in animation */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -53,7 +81,9 @@ const Preloader: React.FC = () => {
         <img
           src={logo}
           alt="Abdamin International Limited"
-          className="w-full"
+          width={192}
+          height={192}
+          className="w-full object-contain"
         />
       </motion.div>
 
@@ -83,7 +113,7 @@ const Preloader: React.FC = () => {
             className="flex flex-col items-center"
           >
             <service.icon className={`h-8 w-8 ${service.color}`} />
-            <p className="mt-1 text-center text-xs text-white sm:text-sm">
+            <p className="mt-1 text-center text-xs text-primary-base sm:text-sm">
               {service.name}
             </p>
           </motion.div>
@@ -102,8 +132,8 @@ const Preloader: React.FC = () => {
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 1 }}
-        className="mt-4 text-center text-lg font-semibold text-white"
+        transition={{ duration: 0.5, delay: 0.7 }}
+        className="mt-4 text-center text-lg font-semibold text-primary-base"
       >
         Innovating Across Industries
       </motion.p>

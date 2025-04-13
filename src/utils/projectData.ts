@@ -74,58 +74,5 @@ export const projects: Project[] = [
     outcome:
       "The completion of these bungalows has significantly improved the living conditions of Nigerian Army personnel. These modern homes provide a comfortable and functional living space, enhancing the quality of life for the military personnel and their families stationed at the barracks.",
   },
-  // {
-  //   id: "transport-logistics-hub",
-  //   title: "Modern Transport Logistics Hub",
-  //   seoTitle: "Lagos Logistics Hub",
-  //   seoDescription: "State-of-the-art logistics hub in Lagos, improving supply chain efficiency and transportation operations.",
-  //   service: "Transportation",
-  //   description:
-  //     "A state-of-the-art logistics hub designed to streamline transportation operations and improve supply chain efficiency.",
-  //   location: "Lagos, Nigeria",
-  //   date: "2023",
-  //   client: "Nigeria Logistics Corporation",
-  //   additionalImages: [
-  //     //   "/images/projects/transport-hub-1.jpg",
-  //     //   "/images/projects/transport-hub-2.jpg",
-  //     //   "/images/projects/transport-hub-3.jpg",
-  //   ],
-  //   features: [
-  //     "Advanced tracking and management systems",
-  //     "Eco-friendly vehicle fleet",
-  //     "Integrated warehousing solutions",
-  //     "Real-time route optimization",
-  //   ],
-  //   scope:
-  //     "Design and implementation of a comprehensive logistics hub, including infrastructure development, technology integration, and operational setup.",
-  //   outcome:
-  //     "The project resulted in a 30% increase in operational efficiency and a 25% reduction in transportation costs for clients utilizing the hub.",
-  // },
-  // {
-  //   id: "telecoms-network-expansion",
-  //   title: "Telecoms Network Expansion",
-  //   seoTitle: "Nigeria Telecoms Expansion",
-  //   seoDescription: "Expanding telecommunications networks to underserved areas in Nigeria, enhancing connectivity and access to services.",
-  //   service: "Telecoms",
-  //   description:
-  //     "Expansion of telecommunications networks to reach underserved areas, enhancing connectivity and access to essential services.",
-  //   location: "Lagos, Nigeria",
-  //   date: "2024",
-  //   client: "Nigeria Telecoms Corporation",
-  //   additionalImages: [
-  //     //   "/images/projects/telecoms-network-1.jpg",
-  //     //   "/images/projects/telecoms-network-2.jpg",
-  //     //   "/images/projects/telecoms-network-3.jpg",
-  //   ],
-  //   features: [
-  //     "Advanced network infrastructure",
-  //     "Enhanced coverage and connectivity",
-  //     "Real-time data analytics",
-  //   ],
-  //   scope:
-  //     "Design and implementation of a comprehensive telecommunications network expansion project, including infrastructure development, technology integration, and operational setup.",
-  //   outcome:
-  //     "The project resulted in a 30% increase in operational efficiency and a 25% reduction in transportation costs for clients utilizing the hub.",
-  // },
   // Add more projects as needed
 ];
