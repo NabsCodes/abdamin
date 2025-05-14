@@ -16,6 +16,7 @@ import {
 } from "../../components/ui/carousel";
 import PortfolioBreadcrumb from "@/components/projects/PortfolioBreadcrumb";
 import AnimatedSection from "@/components/layout/AnimatedSection";
+import { Link } from "react-router-dom";
 
 const Portfolio: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -89,9 +90,9 @@ const Portfolio: React.FC = () => {
               </p>
               <p className="text-primary-base">
                 Have a project in mind?{" "}
-                <a href="/get-in-touch" className="font-semibold underline">
+                <Link to="/get-in-touch" className="font-semibold underline">
                   Let's work together!
-                </a>
+                </Link>
               </p>
             </motion.div>
           )}

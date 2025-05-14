@@ -1,44 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  Building2,
-  Truck,
-  Radio,
-  BrainCircuit,
-  Sun,
-  Droplets,
-  X,
-} from "lucide-react";
+import { X } from "lucide-react";
 import logo from "../../assets/svg/Logo.svg";
-
-// Define services with their respective icons, colors, and names
-const services = [
-  { icon: Building2, color: "text-yellow-500", name: "Construction" },
-  { icon: Truck, color: "text-green-500", name: "Transport" },
-  { icon: Radio, color: "text-blue-500", name: "Telecoms" },
-  { icon: BrainCircuit, color: "text-purple-500", name: "Consults" },
-  { icon: Sun, color: "text-orange-500", name: "Solar Generation" },
-  { icon: Droplets, color: "text-cyan-500", name: "Gauni Water" },
-];
 
 interface PreloaderProps {
   onSkip?: () => void;
 }
 
 const Preloader: React.FC<PreloaderProps> = ({ onSkip }) => {
-  // State to track loading progress
   const [progress, setProgress] = useState(0);
   const [showSkip, setShowSkip] = useState(false);
 
-  // Effect to simulate loading progress
   useEffect(() => {
     const timer = setInterval(() => {
-      setProgress((prevProgress) =>
-        prevProgress >= 100 ? 100 : prevProgress + 1,
-      );
+      setProgress((prev) => (prev >= 100 ? 100 : prev + 1));
     }, 30);
 
-    // Show skip button after 1 second
     const skipTimer = setTimeout(() => {
       setShowSkip(true);
     }, 500);
@@ -55,88 +32,85 @@ const Preloader: React.FC<PreloaderProps> = ({ onSkip }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-white to-primary-10 p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-primary-10/20 to-white"
     >
-      {/* Skip button */}
-      {showSkip && onSkip && (
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.7 }}
-          whileHover={{ opacity: 1 }}
-          className="absolute right-4 top-4 flex items-center gap-1 rounded-md bg-primary-base/10 px-3 py-1 text-sm text-primary-base transition-colors hover:bg-primary-base/20"
-          onClick={onSkip}
-          aria-label="Skip intro animation"
-        >
-          Skip <X className="h-3 w-3" />
-        </motion.button>
-      )}
+      {/* Background subtle pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,theme(colors.primary.base/0.08)_1px,transparent_0)] bg-[size:40px_40px]" />
 
-      {/* Logo with fade-in animation */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className="flex h-48 w-48 items-center justify-center"
-      >
-        <img
-          src={logo}
-          alt="Abdamin International Limited"
-          width={192}
-          height={192}
-          className="w-full object-contain"
-        />
-      </motion.div>
-
-      {/* Grid of service icons */}
-      <motion.div
-        className="grid grid-cols-3 gap-4 sm:grid-cols-6"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          visible: {
-            transition: {
-              staggerChildren: 0.1,
-            },
-          },
-        }}
-      >
-        {services.map((service, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.5,
-              delay: index * 0.1,
-              ease: "easeOut",
-            }}
-            className="flex flex-col items-center"
+      <div className="relative flex w-full max-w-[560px] flex-col items-center px-6">
+        {/* Skip button */}
+        {showSkip && onSkip && (
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.7 }}
+            whileHover={{ opacity: 1 }}
+            className="absolute -top-16 right-6 flex items-center gap-1.5 rounded-full bg-white/80 px-4 py-2 text-sm text-primary-base shadow-sm backdrop-blur-sm transition-all hover:bg-white hover:shadow-md"
+            onClick={onSkip}
+            aria-label="Skip intro animation"
           >
-            <service.icon className={`h-8 w-8 ${service.color}`} />
-            <p className="mt-1 text-center text-xs text-primary-base sm:text-sm">
-              {service.name}
-            </p>
+            Skip <X className="h-3.5 w-3.5" />
+          </motion.button>
+        )}
+
+        {/* Logo container with subtle decoration */}
+        <div className="relative mb-16">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="relative z-10 flex h-16 items-center justify-center sm:h-20"
+          >
+            <img
+              src={logo}
+              alt="Abdamin International Limited"
+              className="h-full w-auto object-contain"
+            />
           </motion.div>
-        ))}
-      </motion.div>
+        </div>
 
-      {/* Progress bar */}
-      <motion.div
-        initial={{ width: 0 }}
-        animate={{ width: `${progress}%` }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="mt-8 h-1 w-4/5 max-w-md bg-primary-base"
-      />
+        {/* Progress section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="w-full space-y-6"
+        >
+          {/* Progress text */}
+          <div className="flex items-center justify-between px-1 text-sm">
+            <span className="font-medium text-primary-base/90">
+              Preparing your experience
+            </span>
+            <span className="font-mono text-primary-base/80">
+              {progress < 10 ? `0${progress}` : progress}%
+            </span>
+          </div>
 
-      {/* Tagline */}
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.7 }}
-        className="mt-4 text-center text-lg font-semibold text-primary-base"
-      >
-        Innovating Across Industries
-      </motion.p>
+          {/* Progress bar container */}
+          <div className="h-1 w-full overflow-hidden rounded-full bg-primary-base/10">
+            <motion.div
+              initial={{ x: "-100%" }}
+              animate={{ x: `${progress - 100}%` }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="h-full w-full origin-left bg-primary-base"
+            />
+          </div>
+        </motion.div>
+
+        {/* Company description */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="mt-16 text-center"
+        >
+          <h2 className="text-xl font-semibold text-primary-base sm:text-2xl">
+            Empowering Progress
+          </h2>
+          <p className="mt-2 text-sm text-primary-base/70 sm:text-base">
+            Through Innovative Solutions Across Industries
+          </p>
+        </motion.div>
+      </div>
     </motion.div>
   );
 };
