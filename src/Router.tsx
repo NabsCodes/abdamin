@@ -1,19 +1,22 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./components/layout/Layout";
-import HomePage from "./pages/HomePage";
-import { MenuProvider } from "./context/MenuContext";
-import AboutUs from "./pages/AboutUs";
-import Portfolio from "./pages/Project/Portfolio";
-import ServicesPage from "./pages/Services/ServicesPage";
-import GetInTouch from "./pages/GetInTouch";
-import Construction from "./pages/Services/Construction";
-import Transportation from "./pages/Services/Transportation";
-import Telecoms from "./pages/Services/Telecoms";
-import Consults from "./pages/Services/Consults";
-import SolarGeneration from "./pages/Services/SolarGeneration";
-import GauniWater from "./pages/Services/GauniWater";
-import ProjectPage from "./pages/Project/ProjectPage";
-import NotFound from "./pages/NotFound";
+import Layout from "@/components/layout/Layout";
+import { MenuProvider } from "@/context/MenuContext";
+
+// Lazy load all pages for code splitting
+const HomePage = lazy(() => import("@/pages/HomePage"));
+const AboutUs = lazy(() => import("@/pages/AboutUs"));
+const Portfolio = lazy(() => import("@/pages/Project/Portfolio"));
+const ServicesPage = lazy(() => import("@/pages/Services/ServicesPage"));
+const GetInTouch = lazy(() => import("@/pages/GetInTouch"));
+const Construction = lazy(() => import("@/pages/Services/Construction"));
+const Transportation = lazy(() => import("@/pages/Services/Transportation"));
+const Telecoms = lazy(() => import("@/pages/Services/Telecoms"));
+const Consults = lazy(() => import("@/pages/Services/Consults"));
+const SolarGeneration = lazy(() => import("@/pages/Services/SolarGeneration"));
+const GauniWater = lazy(() => import("@/pages/Services/GauniWater"));
+const ProjectPage = lazy(() => import("@/pages/Project/ProjectPage"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
 
 type routes = {
   path: string;
@@ -45,21 +48,40 @@ const routes: routes[] = [
   { path: "*", element: <NotFound />, layout: false },
 ];
 
+// Loading fallback component
+const PageLoader = () => (
+  <div className="flex min-h-screen items-center justify-center">
+    <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary-base border-t-transparent" />
+  </div>
+);
+
 const Router = () => {
   return (
     <MenuProvider>
       <BrowserRouter>
-        <Routes>
-          {routes.map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              element={
-                route.layout ? <Layout>{route.element}</Layout> : route.element
-              }
-            />
-          ))}
-        </Routes>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  route.layout ? (
+                    <Layout>
+                      <Suspense fallback={<PageLoader />}>
+                        {route.element}
+                      </Suspense>
+                    </Layout>
+                  ) : (
+                    <Suspense fallback={<PageLoader />}>
+                      {route.element}
+                    </Suspense>
+                  )
+                }
+              />
+            ))}
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </MenuProvider>
   );

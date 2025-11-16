@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import logoWebp from "../../assets/images/Logo.webp";
 import logoFallback from "../../assets/svg/Logo.svg";
@@ -22,15 +22,32 @@ const Navbar: React.FC = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  useClickOutside(menuRef, () => {
+  const handleClickOutside = useCallback(() => {
     if (isMenuOpen) setIsMenuOpen(false);
-  });
+  }, [isMenuOpen]);
+
+  useClickOutside(menuRef, handleClickOutside);
+
+  const handleScroll = useCallback(() => {
+    setIsScrolled(window.scrollY > 52);
+  }, []);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 52);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    // Throttle scroll events for better performance
+    let ticking = false;
+    const throttledHandleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", throttledHandleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", throttledHandleScroll);
+  }, [handleScroll]);
 
   useEffect(() => {
     if (isMenuOpen) {

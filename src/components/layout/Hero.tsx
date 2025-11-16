@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { NavLink } from "react-router-dom";
 import ScrollToBottomButton from "../ui/ScrollToBottom";
 import AnimatedSection from "./AnimatedSection";
@@ -19,18 +19,34 @@ type HeroProps = {
 const Hero = ({ title, ...props }: HeroProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
+  const handleImageLoad = useCallback(() => {
+    setImageLoaded(true);
+  }, []);
+
+  // Memoize background image style
+  const backgroundImageStyle = useMemo(
+    () => ({
+      backgroundImage: imageLoaded ? `url(${props.backgroundImage})` : "none",
+    }),
+    [imageLoaded, props.backgroundImage],
+  );
+
   useEffect(() => {
     const img = new Image();
     img.src = props.backgroundImage;
 
     // If the image is already cached, it might load immediately
     if (img.complete) {
-      setImageLoaded(true);
+      handleImageLoad();
     } else {
-      img.onload = () => setImageLoaded(true);
+      img.onload = handleImageLoad;
+      img.onerror = () => {
+        // Handle image load error gracefully
+        console.warn("Failed to load hero image:", props.backgroundImage);
+      };
     }
 
-    // Preload the image
+    // Preload the image using link preload
     const link = document.createElement("link");
     link.rel = "preload";
     link.as = "image";
@@ -38,9 +54,14 @@ const Hero = ({ title, ...props }: HeroProps) => {
     document.head.appendChild(link);
 
     return () => {
-      document.head.removeChild(link);
+      // Cleanup
+      if (document.head.contains(link)) {
+        document.head.removeChild(link);
+      }
+      img.onload = null;
+      img.onerror = null;
     };
-  }, [props.backgroundImage]);
+  }, [props.backgroundImage, handleImageLoad]);
 
   return (
     <AnimatedSection>
@@ -51,11 +72,7 @@ const Hero = ({ title, ...props }: HeroProps) => {
           "overflow-hidden",
           imageLoaded ? "bg-center bg-no-repeat" : "",
         )}
-        style={{
-          backgroundImage: imageLoaded
-            ? `url(${props.backgroundImage})`
-            : "none",
-        }}
+        style={backgroundImageStyle}
         role="banner"
         aria-label="Hero section"
       >

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Router from "./Router";
 import Preloader from "./components/common/Preloader";
+import ErrorBoundary from "./components/common/ErrorBoundary";
 
 function App(): JSX.Element {
   // State to control whether the preloader is shown
@@ -25,22 +26,24 @@ function App(): JSX.Element {
   };
 
   return (
-    <AnimatePresence mode="wait">
-      {loading ? (
-        // Show the Preloader while loading
-        <Preloader key="preloader" onSkip={handleSkip} />
-      ) : (
-        // Show the main app content after loading
-        <motion.div
-          key="router"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          <Router />
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <ErrorBoundary>
+      <AnimatePresence mode="wait">
+        {loading ? (
+          // Show the Preloader while loading
+          <Preloader key="preloader" onSkip={handleSkip} />
+        ) : (
+          // Show the main app content after loading
+          <motion.div
+            key="router"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Router />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </ErrorBoundary>
   );
 }
 

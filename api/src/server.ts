@@ -15,17 +15,32 @@ const app = express();
 // Initialize Resend with API key
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Middleware
-app.use(cors()); // Enable CORS for all routes
+// Middleware - CORS configuration
+const corsOptions = {
+  origin:
+    process.env.NODE_ENV === "production"
+      ? ["https://www.abdamin.com", "https://abdamin.com"] // Production origins
+      : [
+          "http://localhost:5173",
+          "http://localhost:5174",
+          "http://localhost:3000",
+          "http://localhost:3002",
+        ], // Development origins
+  credentials: true,
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions)); // Enable CORS with proper configuration
 app.use(express.json()); // Parse JSON request bodies
 
 // Get the base URL for the API
-app.get("/", (req, res) => {
+app.get("/", (_: Request, res: Response) => {
   res.send("Abdamin API");
 });
 
 // Health check endpoint
-app.get("/api/health", (req, res) => {
+app.get("/api/health", (_: Request, res: Response) => {
   res.status(200).send("OK");
 });
 
@@ -81,7 +96,7 @@ app.post(
 
 // For local development
 if (process.env.NODE_ENV !== "production") {
-  const PORT = 3000;
+  const PORT = 3002;
   app.listen(PORT, () => {
     console.log(`Server running on port http://localhost:${PORT}`);
   });

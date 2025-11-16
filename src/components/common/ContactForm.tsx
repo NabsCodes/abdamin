@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import clsx from "clsx";
 import { RefreshCw } from "lucide-react";
 import Toast from "../ui/Toast";
@@ -8,80 +11,45 @@ interface ContactFormProps {
   className?: string;
 }
 
-interface FormErrors {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-}
+// Zod schema for form validation
+const contactFormSchema = z.object({
+  name: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .max(100, "Name must be less than 100 characters")
+    .trim(),
+  email: z.string().email("Please enter a valid email address").trim(),
+  subject: z
+    .string()
+    .min(3, "Subject must be at least 3 characters")
+    .max(200, "Subject must be less than 200 characters")
+    .trim(),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(1000, "Message must be less than 1000 characters")
+    .trim(),
+});
+
+type ContactFormData = z.infer<typeof contactFormSchema>;
 
 const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [toast, setToast] = useState<{
+  const [toast, setToast] = React.useState<{
     type: "success" | "error";
     message: string;
   } | null>(null);
 
-  // Form validation
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
-    if (!name.trim()) newErrors.name = "Name is required";
-    if (!email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = "Email is invalid";
-    }
-    if (!subject.trim()) newErrors.subject = "Subject is required";
-    if (!message.trim()) newErrors.message = "Message is required";
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    mode: "onBlur", // Validate on blur for better UX
+  });
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  // Handle input changes
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    name: "name" | "email" | "subject" | "message",
-  ) => {
-    const { value } = e.target;
-    switch (name) {
-      case "name":
-        setName(value);
-        break;
-      case "email":
-        setEmail(value);
-        break;
-      case "subject":
-        setSubject(value);
-        break;
-      case "message":
-        setMessage(value);
-        break;
-      default:
-        break;
-    }
-
-    // Clear error for the changed input
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: undefined }));
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validateForm()) {
-      setToast({
-        type: "error",
-        message: "Please fill in all required fields correctly.",
-      });
-      return;
-    }
-
-    setIsSubmitting(true);
+  const onSubmit = async (data: ContactFormData) => {
     setToast(null);
 
     try {
@@ -90,7 +58,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, subject, message }),
+        body: JSON.stringify(data),
       });
 
       if (response.ok) {
@@ -98,23 +66,20 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
           type: "success",
           message: "Your message has been sent successfully!",
         });
-        // Reset form fields
-        setName("");
-        setEmail("");
-        setSubject("");
-        setMessage("");
-        setErrors({});
+        reset(); // Reset form after successful submission
       } else {
-        throw new Error("Server responded with an error");
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || "Server responded with an error");
       }
     } catch (error) {
-      console.error(error);
+      console.error("Form submission error:", error);
       setToast({
         type: "error",
-        message: "An error occurred. Please try again later.",
+        message:
+          error instanceof Error
+            ? error.message
+            : "An error occurred. Please try again later.",
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -130,11 +95,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
         />
       )}
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         className={clsx(
           "mx-auto w-full space-y-4 rounded-2xl border border-solid border-neutral-10/50 bg-[#fafbfe] p-6 md:max-w-md",
           className,
         )}
+        noValidate
       >
         <div className="space-y-2">
           <label
@@ -146,17 +112,28 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
           <input
             type="text"
             id="name"
-            value={name}
-            onChange={(e) => handleInputChange(e, "name")}
+            {...register("name")}
             placeholder="Name"
-            className={`h-[52px] w-full rounded-3xl border border-solid ${
-              errors.name ? "border-red-500" : "border-neutral-10"
-            } bg-white px-4 text-[16px] leading-[22px] transition-all duration-200 ease-in-out placeholder:text-neutral-30 focus:border-primary-50 focus:outline-none`}
+            aria-invalid={errors.name ? "true" : "false"}
+            aria-describedby={errors.name ? "name-error" : undefined}
+            className={clsx(
+              "h-[52px] w-full rounded-3xl border border-solid bg-white px-4 text-[16px] leading-[22px] transition-all duration-200 ease-in-out placeholder:text-neutral-30 focus:border-primary-50 focus:outline-none",
+              errors.name
+                ? "border-red-500 focus:border-red-500"
+                : "border-neutral-10",
+            )}
           />
           {errors.name && (
-            <p className="mt-1 text-xs text-red-500">{errors.name}</p>
+            <p
+              id="name-error"
+              className="mt-1 text-xs text-red-500"
+              role="alert"
+            >
+              {errors.name.message}
+            </p>
           )}
         </div>
+
         <div className="space-y-2">
           <label
             htmlFor="email"
@@ -167,17 +144,28 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
           <input
             type="email"
             id="email"
-            value={email}
-            onChange={(e) => handleInputChange(e, "email")}
+            {...register("email")}
             placeholder="you@company.com"
-            className={`h-[52px] w-full rounded-3xl border border-solid ${
-              errors.email ? "border-red-500" : "border-neutral-10"
-            } bg-white px-4 text-[16px] leading-[22px] transition-all duration-200 ease-in-out placeholder:text-neutral-30 focus:border-primary-50 focus:outline-none`}
+            aria-invalid={errors.email ? "true" : "false"}
+            aria-describedby={errors.email ? "email-error" : undefined}
+            className={clsx(
+              "h-[52px] w-full rounded-3xl border border-solid bg-white px-4 text-[16px] leading-[22px] transition-all duration-200 ease-in-out placeholder:text-neutral-30 focus:border-primary-50 focus:outline-none",
+              errors.email
+                ? "border-red-500 focus:border-red-500"
+                : "border-neutral-10",
+            )}
           />
           {errors.email && (
-            <p className="mt-1 text-xs text-red-500">{errors.email}</p>
+            <p
+              id="email-error"
+              className="mt-1 text-xs text-red-500"
+              role="alert"
+            >
+              {errors.email.message}
+            </p>
           )}
         </div>
+
         <div className="space-y-2">
           <label
             htmlFor="subject"
@@ -188,17 +176,28 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
           <input
             type="text"
             id="subject"
-            value={subject}
-            onChange={(e) => handleInputChange(e, "subject")}
+            {...register("subject")}
             placeholder="Subject"
-            className={`h-[52px] w-full rounded-3xl border border-solid ${
-              errors.subject ? "border-red-500" : "border-neutral-10"
-            } bg-white px-4 text-[16px] leading-[22px] transition-all duration-200 ease-in-out placeholder:text-neutral-30 focus:border-primary-50 focus:outline-none`}
+            aria-invalid={errors.subject ? "true" : "false"}
+            aria-describedby={errors.subject ? "subject-error" : undefined}
+            className={clsx(
+              "h-[52px] w-full rounded-3xl border border-solid bg-white px-4 text-[16px] leading-[22px] transition-all duration-200 ease-in-out placeholder:text-neutral-30 focus:border-primary-50 focus:outline-none",
+              errors.subject
+                ? "border-red-500 focus:border-red-500"
+                : "border-neutral-10",
+            )}
           />
           {errors.subject && (
-            <p className="mt-1 text-xs text-red-500">{errors.subject}</p>
+            <p
+              id="subject-error"
+              className="mt-1 text-xs text-red-500"
+              role="alert"
+            >
+              {errors.subject.message}
+            </p>
           )}
         </div>
+
         <div className="space-y-2">
           <label
             htmlFor="message"
@@ -208,21 +207,34 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
           </label>
           <textarea
             id="message"
-            value={message}
-            onChange={(e) => handleInputChange(e, "message")}
+            {...register("message")}
             placeholder="Leave us a message..."
-            className={`h-[151px] w-full rounded-3xl border border-solid ${
-              errors.message ? "border-red-500" : "border-neutral-10"
-            } bg-white px-4 py-2 text-[16px] leading-[22px] transition-all duration-200 ease-in-out placeholder:text-neutral-30 focus:border-primary-50 focus:outline-none`}
+            rows={5}
+            aria-invalid={errors.message ? "true" : "false"}
+            aria-describedby={errors.message ? "message-error" : undefined}
+            className={clsx(
+              "h-[151px] w-full resize-none rounded-3xl border border-solid bg-white px-4 py-2 text-[16px] leading-[22px] transition-all duration-200 ease-in-out placeholder:text-neutral-30 focus:border-primary-50 focus:outline-none",
+              errors.message
+                ? "border-red-500 focus:border-red-500"
+                : "border-neutral-10",
+            )}
           />
           {errors.message && (
-            <p className="mt-1 text-xs text-red-500">{errors.message}</p>
+            <p
+              id="message-error"
+              className="mt-1 text-xs text-red-500"
+              role="alert"
+            >
+              {errors.message.message}
+            </p>
           )}
         </div>
+
         <button
           type="submit"
-          className="btn btn-primary w-full disabled:opacity-50"
+          className="btn btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50"
           disabled={isSubmitting}
+          aria-busy={isSubmitting}
         >
           {isSubmitting ? (
             <div className="flex items-center justify-center">
