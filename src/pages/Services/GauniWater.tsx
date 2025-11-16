@@ -43,6 +43,7 @@ const GauniWater: React.FC = () => {
         backgroundImage={gauniWater.heroImage}
         linkClassName="btn-hidden-all"
         className="h-[540px] bg-cover md:h-[650px]"
+        overline={gauniWater.title}
       />
       {/* Main content section */}
       <section className="mx-auto flex max-w-7xl flex-col gap-4 px-4 sm:px-6 md:gap-8 lg:px-8">

@@ -14,9 +14,10 @@ type HeroProps = {
   linkClassName?: string;
   text?: string;
   titleClassName?: string;
+  overline?: string;
 };
 
-const Hero = ({ title, ...props }: HeroProps) => {
+const Hero = ({ title, overline, ...props }: HeroProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleImageLoad = useCallback(() => {
@@ -83,6 +84,16 @@ const Hero = ({ title, ...props }: HeroProps) => {
           />
         )}
         <div className="relative mx-auto flex max-w-8xl flex-col gap-6 px-4 py-32 sm:px-6 sm:py-36 md:py-40 lg:px-8">
+          {/* Overline */}
+          {overline && (
+            <div className="flex items-center gap-3">
+              <div className="h-px w-12 bg-secondary-base" aria-hidden="true" />
+              <span className="text-sm font-semibold uppercase tracking-wider text-neutral-base/90">
+                {overline}
+              </span>
+            </div>
+          )}
+
           <h1
             className={cn(
               "text-3xl font-bold tracking-wide sm:text-4xl lg:text-6xl",

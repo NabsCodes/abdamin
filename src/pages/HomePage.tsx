@@ -41,6 +41,7 @@ const HomePage: React.FC = () => {
         link="/about-us"
         className="h-[650px] bg-cover bg-left sm:bg-center md:h-[750px]"
         text="Learn More"
+        overline="Welcome to Abdamin"
       />
       <AnimatedSection>
         <Services />

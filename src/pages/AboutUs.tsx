@@ -18,7 +18,7 @@ const AboutUs: React.FC = () => {
       />
       {/* About Us page content */}
       <Hero
-        title="About US"
+        title="About Us"
         titleClassName="mt-[85px] md:mt-[110px]"
         backgroundImage={aboutUs}
         linkClassName="btn-hidden-all"

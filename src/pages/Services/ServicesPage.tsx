@@ -22,6 +22,7 @@ const ServicesPage: React.FC = () => {
       {/* Services page content */}
       <Hero
         title="Our Services"
+        subtitle="Comprehensive solutions across Construction, Transportation, Telecoms, Consulting, Solar Energy, and Premium Water."
         titleClassName="mt-[85px] md:mt-[110px]"
         backgroundImage={servicesImage}
         linkClassName="btn-hidden-all"

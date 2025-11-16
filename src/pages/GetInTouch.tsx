@@ -16,8 +16,8 @@ const GetInTouch: React.FC = () => {
       />
       {/* Get In Touch page content */}
       <Hero
-        title="Get In Touch With Us!"
-        subtitle="Feel free to reach us via email or phone, or visit any of our locations in Adamawa, Abuja, Lagos, and Kaduna. We are available to help you."
+        title="Get In Touch"
+        subtitle="Reach out to us via email, phone, or visit any of our locations in Adamawa, Abuja, Lagos, and Kaduna. We're here to help."
         titleClassName="mt-[85px] md:mt-[110px]"
         backgroundImage={getInTouchImage}
         linkClassName="btn-hidden-all"

@@ -44,7 +44,7 @@ const Portfolio: React.FC = () => {
       />
       <Hero
         title="Portfolio"
-        subtitle="Explore our diverse portfolio of projects across Nigeria, showcasing both completed works and ongoing developments. Take a look!"
+        subtitle="Explore our diverse portfolio of projects across Nigeria, showcasing both completed works and ongoing developments."
         titleClassName="mt-[85px] md:mt-[110px]"
         backgroundImage={portfolio}
         linkClassName="btn-hidden-all"

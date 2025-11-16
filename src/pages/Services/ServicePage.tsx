@@ -27,19 +27,17 @@ const ServicePage: React.FC<ServicePageProps> = ({
     <>
       {/* Hero section with dynamic title and background image */}
       <Hero
+        title={title}
         titleClassName="mt-[85px] md:mt-[110px] hidden"
         backgroundImage={heroImage}
         linkClassName="btn-hidden-all"
         className={cn("h-[540px] bg-cover md:h-[650px]", heroClassName)}
+        overline={title}
       />
 
       {/* Main content section */}
       <AnimatedSection>
         <section className="mx-auto flex max-w-7xl flex-col gap-4 px-4 sm:px-6 md:gap-8 lg:px-8">
-          <h1 className="text-3xl font-bold text-primary-base md:text-4xl">
-            {title}
-          </h1>
-
           {sections.map((section, index) => (
             <div key={index} className="space-y-4">
               <h2 className="text-lg font-semibold md:text-xl lg:text-2xl">

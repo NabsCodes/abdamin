@@ -65,7 +65,7 @@ class ErrorBoundary extends Component<Props, State> {
 
       // Default error UI
       return (
-        <div className="flex min-h-screen flex-col items-center justify-center bg-neutral-base px-4 py-16">
+        <div className="flex min-h-screen flex-col items-center justify-center px-4 py-16">
           <div className="mx-auto max-w-2xl text-center">
             <div className="mb-6 flex justify-center">
               <div className="rounded-full bg-secondary-base/10 p-4">
@@ -73,18 +73,18 @@ class ErrorBoundary extends Component<Props, State> {
               </div>
             </div>
 
-            <h1 className="mb-4 text-3xl font-bold text-white md:text-4xl">
+            <h1 className="mb-4 text-3xl font-bold md:text-4xl">
               Something went wrong
             </h1>
 
-            <p className="mb-8 text-lg text-neutral-30">
-              We're sorry, but something unexpected happened. Please try
+            <p className="mb-8 text-lg">
+              We&apos;re sorry, but something unexpected happened. Please try
               refreshing the page.
             </p>
 
             {import.meta.env.DEV && this.state.error && (
-              <details className="mb-8 rounded-lg bg-neutral-50/10 p-4 text-left text-sm text-neutral-30">
-                <summary className="cursor-pointer font-semibold text-white">
+              <details className="mb-8 rounded-lg bg-neutral-50/10 p-4 text-left text-sm text-neutral-50">
+                <summary className="cursor-pointer font-semibold">
                   Error Details (Development Only)
                 </summary>
                 <pre className="mt-4 overflow-auto whitespace-pre-wrap break-words">
