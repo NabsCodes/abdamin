@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
-import SEO from "../../components/layout/SEO";
-import portfolio from "../../assets/images/portfolio-landing.webp";
-import Hero from "../../components/layout/Hero";
-import ProjectCard from "../../components/projects/ProjectCard";
-import { projects } from "../../utils/projectData";
+import SEO from "@/components/layout/SEO";
+import portfolio from "@/assets/images/portfolio-landing.webp";
+import Hero from "@/components/layout/Hero";
+import ProjectCard from "@/components/projects/ProjectCard";
+import { projects } from "@/utils/projectData";
 import { Building2 } from "lucide-react";
 import { motion } from "framer-motion";
 import {
@@ -13,7 +13,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../../components/ui/carousel";
+} from "@/components/ui/carousel";
 import PortfolioBreadcrumb from "@/components/projects/PortfolioBreadcrumb";
 import AnimatedSection from "@/components/layout/AnimatedSection";
 import { Link } from "react-router-dom";

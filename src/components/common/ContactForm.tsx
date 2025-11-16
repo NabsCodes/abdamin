@@ -4,8 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import clsx from "clsx";
 import { RefreshCw } from "lucide-react";
-import Toast from "../ui/Toast";
-import config from "../../utils/config";
+import Toast from "@/components/ui/Toast";
+import { useSendEmail } from "@/hooks/api/useSendEmail";
 
 interface ContactFormProps {
   className?: string;
@@ -42,45 +42,35 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     reset,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
     mode: "onBlur", // Validate on blur for better UX
   });
 
-  const onSubmit = async (data: ContactFormData) => {
+  // React Query mutation for sending email
+  const emailMutation = useSendEmail();
+
+  const onSubmit = (data: ContactFormData) => {
     setToast(null);
-
-    try {
-      const response = await fetch(`${config.apiUrl}/send-email`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
+    emailMutation.mutate(data, {
+      onSuccess: () => {
         setToast({
           type: "success",
           message: "Your message has been sent successfully!",
         });
         reset(); // Reset form after successful submission
-      } else {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || "Server responded with an error");
-      }
-    } catch (error) {
-      console.error("Form submission error:", error);
-      setToast({
-        type: "error",
-        message:
-          error instanceof Error
-            ? error.message
-            : "An error occurred. Please try again later.",
-      });
-    }
+      },
+      onError: (error: Error) => {
+        console.error("Form submission error:", error);
+        setToast({
+          type: "error",
+          message:
+            error.message || "An error occurred. Please try again later.",
+        });
+      },
+    });
   };
 
   return (
@@ -233,10 +223,10 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
         <button
           type="submit"
           className="btn btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50"
-          disabled={isSubmitting}
-          aria-busy={isSubmitting}
+          disabled={emailMutation.isPending}
+          aria-busy={emailMutation.isPending}
         >
-          {isSubmitting ? (
+          {emailMutation.isPending ? (
             <div className="flex items-center justify-center">
               <RefreshCw className="mr-2 h-5 w-5 animate-spin" />
               <span>Submitting...</span>

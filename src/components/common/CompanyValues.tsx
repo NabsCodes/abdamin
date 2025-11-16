@@ -2,8 +2,8 @@ import React from "react";
 import HeadingSection from "./HeadingSection";
 import clsx from "clsx";
 import ValueCard from "./ValueCard";
-import { valueData, Value } from "../../utils/companyValuesData";
-import AnimatedSection from "../layout/AnimatedSection";
+import { valueData, Value } from "@/utils/companyValuesData";
+import AnimatedSection from "@/components/layout/AnimatedSection";
 
 const CompanyValues: React.FC = () => {
   return (

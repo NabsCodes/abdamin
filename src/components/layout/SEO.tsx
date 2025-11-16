@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
-import staticOgImage from "../../assets/images/og-image.png";
+import staticOgImage from "@/assets/images/og-image.png";
 
 // Define the props interface for the SEO component
 interface SEOProps {

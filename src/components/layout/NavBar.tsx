@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import logoWebp from "../../assets/images/Logo.webp";
-import logoFallback from "../../assets/svg/Logo.svg";
-import { CloseIcon, MenuIcon } from "../../components/ui/SvgIcons";
-import { navItems, socialLinks, copyRight, navInfo } from "../../utils/data";
-import { useMenu } from "../../context/MenuContext";
-import useClickOutside from "../../hooks/useClickOutside";
-import StaggeredDropDown from "../ui/StaggeredDropdown";
-import MobileMenu from "./MobileMenu";
+import logoWebp from "@/assets/images/Logo.webp";
+import logoFallback from "@/assets/svg/Logo.svg";
+import { CloseIcon, MenuIcon } from "@/components/ui/SvgIcons";
+import { navItems, socialLinks, copyRight, navInfo } from "@/utils/data";
+import { useMenu } from "@/context/MenuContext";
+import useClickOutside from "@/hooks/useClickOutside";
+import StaggeredDropDown from "@/components/ui/StaggeredDropdown";
+import MobileMenu from "@/components/layout/MobileMenu";
 import { cn } from "@/lib/utils";
 
 const Navbar: React.FC = () => {
@@ -72,11 +72,12 @@ const Navbar: React.FC = () => {
               />
               <img
                 src={logoFallback}
-                alt="Abdamin Logo"
-                width="160"
-                height="40"
+                alt="Abdamin International Limited logo"
+                width={160}
+                height={40}
                 className="h-auto w-28 sm:w-32 md:w-36 lg:w-40"
-                srcSet={`${logoFallback} 1x, ${logoFallback} 2x`}
+                loading="eager"
+                decoding="async"
               />
             </picture>
           </NavLink>

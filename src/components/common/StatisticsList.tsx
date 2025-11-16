@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import clsx from "clsx";
-import StatisticItem from "./StatisticItem";
+import StatisticItem from "@/components/common/StatisticItem";
 
 const StatisticsList: React.FC = () => {
   const currentYear = new Date().getFullYear();

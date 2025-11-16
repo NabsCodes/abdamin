@@ -1,11 +1,11 @@
-import constructionImage from "../assets/images/construction-landing.webp";
-import transportationImage from "../assets/images/transportation.webp";
-import telecomsImage from "../assets/images/telecoms-landing.webp";
-import consultsImage from "../assets/images/consults-landing.webp";
-import solarGenerationImage from "../assets/images/solar-generation.webp";
-import gauniWaterImage from "../assets/images/gauni-water.webp";
-import gauniWaterBottle from "../assets/images/gauni-water-bottle.webp";
-import gauniWaterGallon from "../assets/images/gauni-water-gallon.webp";
+import constructionImage from "@/assets/images/construction-landing.webp";
+import transportationImage from "@/assets/images/transportation.webp";
+import telecomsImage from "@/assets/images/telecoms-landing.webp";
+import consultsImage from "@/assets/images/consults-landing.webp";
+import solarGenerationImage from "@/assets/images/solar-generation.webp";
+import gauniWaterImage from "@/assets/images/gauni-water.webp";
+import gauniWaterBottle from "@/assets/images/gauni-water-bottle.webp";
+import gauniWaterGallon from "@/assets/images/gauni-water-gallon.webp";
 
 export const serviceData = {
   construction: {

@@ -1,4 +1,4 @@
-import AnimatedSection from "../layout/AnimatedSection";
+import AnimatedSection from "@/components/layout/AnimatedSection";
 
 type HeadingSectionProps = {
   title: string;

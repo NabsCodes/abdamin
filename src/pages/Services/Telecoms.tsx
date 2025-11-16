@@ -1,7 +1,7 @@
 import React from "react";
-import SEO from "../../components/layout/SEO";
+import SEO from "@/components/layout/SEO";
 import ServicePage from "./ServicePage";
-import { serviceData } from "../../utils/serviceData";
+import { serviceData } from "@/utils/serviceData";
 
 const Telecoms: React.FC = () => {
   const { telecoms } = serviceData;

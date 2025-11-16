@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 interface OptimizedImageProps
   extends Omit<
     React.ImgHTMLAttributes<HTMLImageElement>,
-    "src" | "srcSet" | "loading"
+    "src" | "srcSet" | "loading" | "width" | "height"
   > {
   src: string;
   alt: string;
@@ -14,6 +14,8 @@ interface OptimizedImageProps
   sizes?: string;
   quality?: number;
   className?: string;
+  width?: number;
+  height?: number;
 }
 
 /**
@@ -32,6 +34,8 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   priority = false,
   sizes,
   className,
+  width,
+  height,
   onError,
   ...props
 }) => {
@@ -108,6 +112,8 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
         alt={alt}
         srcSet={srcSetValue}
         sizes={sizes}
+        width={width}
+        height={height}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
         onLoad={handleLoad}

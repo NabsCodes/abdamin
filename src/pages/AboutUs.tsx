@@ -1,10 +1,10 @@
-import SEO from "../components/layout/SEO";
-import aboutUs from "../assets/images/About-us.webp";
-import Hero from "../components/layout/Hero";
-import Bio from "../components/common/Bio";
-import Mission from "../components/common/CompanyOverview";
-import StatsAndFeatures from "../components/common/StatsAndFeatures";
-import CompanyValues from "../components/common/CompanyValues";
+import SEO from "@/components/layout/SEO";
+import aboutUs from "@/assets/images/About-us.webp";
+import Hero from "@/components/layout/Hero";
+import Bio from "@/components/common/Bio";
+import Mission from "@/components/common/CompanyOverview";
+import StatsAndFeatures from "@/components/common/StatsAndFeatures";
+import CompanyValues from "@/components/common/CompanyValues";
 import AnimatedSection from "@/components/layout/AnimatedSection";
 
 const AboutUs: React.FC = () => {

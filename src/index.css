@@ -134,4 +134,44 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Prevent zoom on input focus for iOS (accessibility-friendly) */
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevents auto-zoom on iOS when >= 16px */
+  }
+
+  @media screen and (min-width: 768px) {
+    input,
+    textarea,
+    select {
+      font-size: inherit; /* Use normal font size on larger screens */
+    }
+  }
+}
+
+/* Screen reader only - for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus,
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }

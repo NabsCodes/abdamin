@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
-import logo from "../../assets/svg/Logo.svg";
+import logo from "@/assets/svg/Logo.svg";
 
 interface PreloaderProps {
   onSkip?: () => void;

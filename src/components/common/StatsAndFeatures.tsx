@@ -1,6 +1,6 @@
 import React from "react";
-import StatisticsList from "./StatisticsList";
-import FeaturesList from "./FeaturesList";
+import StatisticsList from "@/components/common/StatisticsList";
+import FeaturesList from "@/components/common/FeaturesList";
 
 const StatsAndFeatures: React.FC = () => {
   return (

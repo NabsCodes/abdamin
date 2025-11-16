@@ -1,5 +1,5 @@
-import HeadingSection from "../common/HeadingSection";
-import ServicesGrid from "./ServicesGrid";
+import HeadingSection from "@/components/common/HeadingSection";
+import ServicesGrid from "@/components/services/ServicesGrid";
 
 const Services = () => {
   return (

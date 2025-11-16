@@ -1,17 +1,18 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { projects } from "../../utils/projectData";
-import Hero from "../../components/layout/Hero";
-import SEO from "../../components/layout/SEO";
-import ProjectDetailsSection from "../../components/projects/ProjectDetailsSection";
+import { projects } from "@/utils/projectData";
+import Hero from "@/components/layout/Hero";
+import SEO from "@/components/layout/SEO";
+import ProjectDetailsSection from "@/components/projects/ProjectDetailsSection";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../../components/ui/carousel";
-import ProjectNotFound from "../../components/projects/ProjectNotFound";
+} from "@/components/ui/carousel";
+import ProjectNotFound from "@/components/projects/ProjectNotFound";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 
 const ProjectPage: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>();
@@ -61,10 +62,13 @@ const ProjectPage: React.FC = () => {
                     className="pl-2 md:basis-1/2 md:pl-4"
                   >
                     <div className="group relative aspect-video overflow-hidden rounded-xl">
-                      <img
+                      <OptimizedImage
                         src={img}
-                        alt={project.title}
-                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        alt={`${project.title} - Gallery image ${index + 1} of ${project.additionalImages.length}`}
+                        className="h-full w-full transition-transform duration-300 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        width={800}
+                        height={450}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                         <div className="absolute inset-0 flex flex-col items-start justify-end p-4 text-center">

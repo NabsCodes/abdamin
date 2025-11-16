@@ -1,13 +1,13 @@
-import HeadingSection from "../common/HeadingSection";
+import HeadingSection from "@/components/common/HeadingSection";
 import ProjectCard from "./ProjectCard";
-import { projects } from "../../utils/projectData";
+import { projects } from "@/utils/projectData";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../ui/carousel";
+} from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
 
 const ProjectHome = () => {

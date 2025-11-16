@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { NavLink } from "react-router-dom";
-import ScrollToBottomButton from "../ui/ScrollToBottom";
+import ScrollToBottomButton from "@/components/ui/ScrollToBottom";
 import AnimatedSection from "./AnimatedSection";
 import { cn } from "@/lib/utils";
 

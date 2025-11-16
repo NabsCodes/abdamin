@@ -1,10 +1,10 @@
-import Hero from "../components/layout/Hero";
-import SEO from "../components/layout/SEO";
-import landing from "../assets/images/landing.webp";
-import Services from "../components/services/Services";
-import StatisticsSection from "../components/common/StatisticsSection";
-import CompanyValues from "../components/common/CompanyValues";
-import ProjectHome from "../components/projects/ProjectHome";
+import Hero from "@/components/layout/Hero";
+import SEO from "@/components/layout/SEO";
+import landing from "@/assets/images/landing.webp";
+import Services from "@/components/services/Services";
+import StatisticsSection from "@/components/common/StatisticsSection";
+import CompanyValues from "@/components/common/CompanyValues";
+import ProjectHome from "@/components/projects/ProjectHome";
 import AnimatedSection from "@/components/layout/AnimatedSection";
 
 const HomePage: React.FC = () => {

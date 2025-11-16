@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "../../components/layout/Hero";
+import Hero from "@/components/layout/Hero";
 import AnimatedSection from "@/components/layout/AnimatedSection";
 import { cn } from "@/lib/utils";
 

@@ -1,8 +1,8 @@
-import SEO from "../../components/layout/SEO";
-import servicesImage from "../../assets/images/services-landing.webp";
-import Hero from "../../components/layout/Hero";
-import ServicesGrid from "../../components/services/ServicesGrid";
-import HeadingSection from "../../components/common/HeadingSection";
+import SEO from "@/components/layout/SEO";
+import servicesImage from "@/assets/images/services-landing.webp";
+import Hero from "@/components/layout/Hero";
+import ServicesGrid from "@/components/services/ServicesGrid";
+import HeadingSection from "@/components/common/HeadingSection";
 
 const ServicesPage: React.FC = () => {
   return (

@@ -1,4 +1,4 @@
-import { aboutUsData } from "../../utils/aboutUsData";
+import { aboutUsData } from "@/utils/aboutUsData";
 
 const Bio = () => {
   const { bio } = aboutUsData;

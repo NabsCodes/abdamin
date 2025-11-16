@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import FeatureItem from "./FeatureItem";
+import FeatureItem from "@/components/common/FeatureItem";
 import { TickCircle } from "iconsax-react";
 
 const features = [

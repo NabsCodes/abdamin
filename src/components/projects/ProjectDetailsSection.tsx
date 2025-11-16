@@ -1,5 +1,5 @@
 import React from "react";
-import { Project } from "../../utils/projectData";
+import { Project } from "@/utils/projectData";
 import { Calendar, MapPin, Briefcase, Users } from "lucide-react";
 
 interface ProjectDetailsSectionProps {
@@ -10,7 +10,7 @@ const ProjectDetailsSection: React.FC<ProjectDetailsSectionProps> = ({
   project,
 }) => {
   return (
-    <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-md drop-shadow-md md:p-12">
+    <div className="rounded-3xl border border-gray-200 bg-white p-8 md:p-12">
       <h1 className="mb-8 text-2xl font-bold text-primary-base md:text-4xl">
         {project.title}
       </h1>

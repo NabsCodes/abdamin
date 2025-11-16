@@ -11,8 +11,8 @@ import {
   Droplet,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import SEO from "../components/layout/SEO";
-import logo from "../assets/svg/Logo.svg";
+import SEO from "@/components/layout/SEO";
+import logo from "@/assets/svg/Logo.svg";
 
 const services = [
   { icon: <Briefcase />, name: "Construction", to: "/services/construction" },

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { navInfo, socialLinks } from "../../utils/data";
+import { navInfo, socialLinks } from "@/utils/data";
 import { Building4, Call, Sms } from "iconsax-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

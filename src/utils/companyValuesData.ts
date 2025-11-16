@@ -1,8 +1,8 @@
-import teamwork from "../assets/svg/Teamwork.svg";
-import reliability from "../assets/svg/Insignia.svg";
-import innovation from "../assets/svg/Problem-solve.svg";
-import customerFocus from "../assets/svg/Customer-service.svg";
-import peopleDevelopment from "../assets/svg/Man.svg";
+import teamwork from "@/assets/svg/Teamwork.svg";
+import reliability from "@/assets/svg/Insignia.svg";
+import innovation from "@/assets/svg/Problem-solve.svg";
+import customerFocus from "@/assets/svg/Customer-service.svg";
+import peopleDevelopment from "@/assets/svg/Man.svg";
 
 export interface Value {
   iconSrc: string;

@@ -1,7 +1,7 @@
-import policeSchoolImage from "../assets/images/projects/police-school-1.webp";
-import policeSchoolImage2 from "../assets/images/projects/police-school-2.webp";
-import nigerianArmy from "../assets/images/projects/nigerian-army-1.webp";
-import nigerianArmy2 from "../assets/images/projects/nigerian-army-2.webp";
+import policeSchoolImage from "@/assets/images/projects/police-school-1.webp";
+import policeSchoolImage2 from "@/assets/images/projects/police-school-2.webp";
+import nigerianArmy from "@/assets/images/projects/nigerian-army-1.webp";
+import nigerianArmy2 from "@/assets/images/projects/nigerian-army-2.webp";
 
 export interface Project {
   id: string;

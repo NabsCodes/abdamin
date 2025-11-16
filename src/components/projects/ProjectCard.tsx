@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Project } from "../../utils/projectData";
+import { Project } from "@/utils/projectData";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 
 interface ProjectCardProps {
   project: Project;
@@ -11,10 +12,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     <article className="flex h-[650px] w-full max-w-md flex-col items-center gap-6 overflow-hidden rounded-xl bg-white shadow-lg">
       <figure className="h-[300px] w-full overflow-hidden">
         {project.mainImage ? (
-          <img
+          <OptimizedImage
             src={project.mainImage}
-            alt={project.title}
-            className="h-full w-full object-cover"
+            alt={`${project.title} - ${project.service} project in ${project.location}`}
+            className="h-full w-full"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            width={400}
+            height={300}
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-gray-200">

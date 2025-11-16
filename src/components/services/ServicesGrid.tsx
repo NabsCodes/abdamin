@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import ServiceCard from "./ServiceCard";
-import { servicesData } from "../../utils/data";
-import AnimatedSection from "../layout/AnimatedSection";
+import ServiceCard from "@/components/services/ServiceCard";
+import { servicesData } from "@/utils/data";
+import AnimatedSection from "@/components/layout/AnimatedSection";
 
 interface ServicesGridProps {
   className?: string;

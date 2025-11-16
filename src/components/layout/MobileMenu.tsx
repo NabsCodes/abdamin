@@ -1,4 +1,4 @@
-import logo from "../../assets/images/Logo.webp";
+import logo from "@/assets/images/Logo.webp";
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLink } from "react-router-dom";
@@ -14,8 +14,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useClickOutside from "@/hooks/useClickOutside";
 import { Building4, Call, Sms } from "iconsax-react";
 import { FiChevronDown } from "react-icons/fi";
-import { CloseIcon } from "../ui/SvgIcons";
+import { CloseIcon } from "@/components/ui/SvgIcons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 
 const MobileMenu = ({
   isMenuOpen,
@@ -73,7 +74,15 @@ const MobileMenu = ({
             <div className="flex h-full flex-col">
               <div className="flex items-center justify-between">
                 <NavLink to="/" onClick={() => setIsMenuOpen(false)}>
-                  <img src={logo} alt="Logo" className="h-8 w-auto" />
+                  <OptimizedImage
+                    src={logo}
+                    alt="Abdamin International Limited logo"
+                    width={120}
+                    height={30}
+                    className="h-8 w-auto"
+                    priority={true}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
                 </NavLink>
                 <button
                   onClick={() => setIsMenuOpen(false)}

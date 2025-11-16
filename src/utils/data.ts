@@ -5,12 +5,12 @@ import {
   faInstagram,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
-import transportation from "../assets/images/transportation.webp";
-import construction from "../assets/images/constuction.webp";
-import telecoms from "../assets/images/telecoms.webp";
-import consults from "../assets/images/consultation.webp";
-import solarGeneration from "../assets/images/solar-generation.webp";
-import gauniWater from "../assets/images/gauni-water.webp";
+import transportation from "@/assets/images/transportation.webp";
+import construction from "@/assets/images/constuction.webp";
+import telecoms from "@/assets/images/telecoms.webp";
+import consults from "@/assets/images/consultation.webp";
+import solarGeneration from "@/assets/images/solar-generation.webp";
+import gauniWater from "@/assets/images/gauni-water.webp";
 
 export const servicesData: Service[] = [
   {

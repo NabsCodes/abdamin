@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Palette, Code } from "lucide-react";
-import { footerInfo, navItems, socialLinks, copyRight } from "../../utils/data";
+import { footerInfo, navItems, socialLinks, copyRight } from "@/utils/data";
 import AnimatedSection from "./AnimatedSection";
-import logoWebp from "../../assets/images/Logo-white.webp";
-import logoFallback from "../../assets/svg/Logo-white.svg";
+import logoWebp from "@/assets/images/Logo-white.webp";
+import logoFallback from "@/assets/svg/Logo-white.svg";
 
 const ContactItem = ({
   title,

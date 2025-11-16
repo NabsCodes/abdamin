@@ -1,8 +1,8 @@
-import SEO from "../components/layout/SEO";
-import getInTouchImage from "../assets/images/contact-us.webp";
-import Hero from "../components/layout/Hero";
-import ContactForm from "../components/common/ContactForm";
-import ContactDetails from "../components/common/ContactDetails";
+import SEO from "@/components/layout/SEO";
+import getInTouchImage from "@/assets/images/contact-us.webp";
+import Hero from "@/components/layout/Hero";
+import ContactForm from "@/components/common/ContactForm";
+import ContactDetails from "@/components/common/ContactDetails";
 import AnimatedSection from "@/components/layout/AnimatedSection";
 
 const GetInTouch: React.FC = () => {

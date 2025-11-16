@@ -1,7 +1,7 @@
 import React from "react";
-import SEO from "../../components/layout/SEO";
-import Hero from "../../components/layout/Hero";
-import { serviceData } from "../../utils/serviceData";
+import SEO from "@/components/layout/SEO";
+import Hero from "@/components/layout/Hero";
+import { serviceData } from "@/utils/serviceData";
 
 // Importing Carousel components for product showcase
 import {
