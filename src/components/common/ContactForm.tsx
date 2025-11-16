@@ -5,7 +5,7 @@ import { z } from "zod";
 import clsx from "clsx";
 import { RefreshCw } from "lucide-react";
 import Toast from "@/components/ui/Toast";
-import { useSendEmail } from "@/hooks/api/useSendEmail";
+import { useSendEmail } from "@/hooks/api/useSendEmail.ts";
 
 interface ContactFormProps {
   className?: string;

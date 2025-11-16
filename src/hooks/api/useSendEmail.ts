@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { sendEmail, type EmailRequest, type EmailResponse } from "@/lib/api";
+import { sendEmail, type EmailRequest, type EmailResponse } from "@/lib/api.ts";
 
 // React Query hook for sending emails via contact form
 export const useSendEmail = () =>
