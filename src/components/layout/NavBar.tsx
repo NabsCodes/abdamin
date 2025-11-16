@@ -17,11 +17,6 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
-  // Scroll restoration
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-
   const handleClickOutside = useCallback(() => {
     if (isMenuOpen) setIsMenuOpen(false);
   }, [isMenuOpen]);

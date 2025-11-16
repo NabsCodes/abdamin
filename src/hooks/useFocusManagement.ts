@@ -17,13 +17,11 @@ export const useFocusManagement = () => {
         // Try to focus main content
         const mainContent = document.getElementById("main-content");
         if (mainContent) {
-          mainContent.focus();
+          // Focus without causing page scroll jump
+          mainContent.focus({ preventScroll: true });
           // Remove focus after setting it (for screen readers)
           mainContent.blur();
         }
-
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: "smooth" });
       }, 100);
 
       previousPathRef.current = location.pathname;

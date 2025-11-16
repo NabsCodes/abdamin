@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { MenuProvider } from "@/context/MenuContext";
+import ScrollManager from "@/components/common/ScrollManager";
 
 // Lazy load all pages for code splitting
 const HomePage = lazy(() => import("@/pages/HomePage"));
@@ -59,6 +60,7 @@ const Router = () => {
   return (
     <MenuProvider>
       <BrowserRouter>
+        <ScrollManager />
         <Suspense fallback={<PageLoader />}>
           <Routes>
             {routes.map((route, index) => (

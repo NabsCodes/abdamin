@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { NavLink } from "react-router-dom";
 import upcoming from "@/assets/images/upcoming.webp";
-import AnimatedSection from "./AnimatedSection";
+import AnimatedSection from "@/components/layout/AnimatedSection";
 
 const UpcomingProject = () => {
   return (
