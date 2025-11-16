@@ -35,7 +35,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onSkip }) => {
       className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-primary-10/20 to-white"
     >
       {/* Background subtle pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,theme(colors.primary.base/0.08)_1px,transparent_0)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(1,41,102,0.08)_1px,transparent_0)] bg-[size:40px_40px]" />
 
       <div className="relative flex w-full max-w-[560px] flex-col items-center px-6">
         {/* Skip button */}
