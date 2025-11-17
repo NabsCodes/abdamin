@@ -37,19 +37,29 @@ const ServicePage: React.FC<ServicePageProps> = ({
 
       {/* Main content section */}
       <AnimatedSection>
-        <section className="mx-auto flex max-w-7xl flex-col gap-4 px-4 sm:px-6 md:gap-8 lg:px-8">
+        <section className="mx-auto flex max-w-8xl flex-col gap-4 px-4 sm:px-6 md:gap-8 lg:px-8">
           {sections.map((section, index) => (
             <div key={index} className="space-y-4">
-              <h2 className="text-lg font-semibold md:text-xl lg:text-2xl">
-                {section.title}
-              </h2>
-              {typeof section.content === "string" ? (
-                <p className="whitespace-pre-wrap text-sm md:text-base lg:text-lg">
-                  {section.content}
-                </p>
-              ) : (
-                section.content
-              )}
+              {/* Section Title with Accent */}
+              <div className="flex items-center gap-3">
+                <div
+                  className="h-0.5 w-8 bg-secondary-base transition-all duration-500 md:w-12"
+                  aria-hidden="true"
+                />
+                <h2 className="text-xl font-bold text-neutral-base md:text-2xl lg:text-3xl">
+                  {section.title}
+                </h2>
+              </div>
+              {/* Section Content */}
+              <div className="pl-0 md:pl-4">
+                {typeof section.content === "string" ? (
+                  <p className="whitespace-pre-wrap text-base leading-relaxed text-neutral-50 md:text-lg">
+                    {section.content}
+                  </p>
+                ) : (
+                  section.content
+                )}
+              </div>
             </div>
           ))}
         </section>
