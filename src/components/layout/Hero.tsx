@@ -84,7 +84,7 @@ const Hero = ({ title, overline, ...props }: HeroProps) => {
           />
         )}
         {/* Subtle Overlay - Dims image slightly for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-base/20 via-neutral-base/10 to-neutral-base/30" />
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-neutral-base/20 via-neutral-base/10 to-neutral-base/30" /> */}
 
         <div className="relative z-10 mx-auto flex max-w-8xl flex-col gap-6 px-4 py-32 sm:px-6 sm:py-36 md:py-40 lg:px-8">
           {/* Overline */}
