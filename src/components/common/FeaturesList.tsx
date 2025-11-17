@@ -5,19 +5,19 @@ import { TickCircle } from "iconsax-react";
 
 const features = [
   {
-    icon: <TickCircle size="32" color="#E07160" variant="Bold" />,
+    icon: <TickCircle size="24" color="#D02A10" variant="Bold" />,
     text: "Best manufacturing service provider",
   },
   {
-    icon: <TickCircle size="32" color="#E07160" variant="Bold" />,
+    icon: <TickCircle size="24" color="#D02A10" variant="Bold" />,
     text: "Experienced and trusted contractor",
   },
   {
-    icon: <TickCircle size="32" color="#E07160" variant="Bold" />,
+    icon: <TickCircle size="24" color="#D02A10" variant="Bold" />,
     text: "Innovative solutions every time",
   },
   {
-    icon: <TickCircle size="32" color="#E07160" variant="Bold" />,
+    icon: <TickCircle size="24" color="#D02A10" variant="Bold" />,
     text: "Reliable and professional",
   },
 ];

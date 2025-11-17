@@ -4,7 +4,7 @@ import StatisticItem from "@/components/common/StatisticItem";
 
 const StatisticsList: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  const foundingYear = 2000; // Replace with the actual founding year of the company
+  const foundingYear = 2000;
 
   const statistics = useMemo(
     () => [

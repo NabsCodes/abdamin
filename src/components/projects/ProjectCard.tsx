@@ -28,11 +28,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </>
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-neutral-20">
-            <Briefcase className="h-12 w-12 text-neutral-30" aria-hidden="true" />
+            <Briefcase
+              className="h-12 w-12 text-neutral-30"
+              aria-hidden="true"
+            />
             <span className="sr-only">No image available</span>
           </div>
         )}
-        
+
         {/* Service Badge */}
         <div className="absolute right-4 top-4">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/95 px-3 py-1.5 text-xs font-semibold text-primary-base backdrop-blur-sm">
@@ -58,17 +61,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <dl className="mb-5 space-y-2.5 border-t border-neutral-20 pt-4">
           <div className="flex items-start gap-3">
             <dt className="flex items-center gap-2 text-sm font-medium text-neutral-40">
-              <MapPin className="h-4 w-4 flex-shrink-0 text-primary-base" aria-hidden="true" />
+              <MapPin
+                className="h-4 w-4 flex-shrink-0 text-primary-base"
+                aria-hidden="true"
+              />
               <span className="sr-only">Location:</span>
             </dt>
             <dd className="flex-1 text-sm font-semibold text-neutral-base">
               {project.location}
             </dd>
           </div>
-          
+
           <div className="flex items-start gap-3">
             <dt className="flex items-center gap-2 text-sm font-medium text-neutral-40">
-              <Calendar className="h-4 w-4 flex-shrink-0 text-primary-base" aria-hidden="true" />
+              <Calendar
+                className="h-4 w-4 flex-shrink-0 text-primary-base"
+                aria-hidden="true"
+              />
               <span className="sr-only">Date:</span>
             </dt>
             <dd className="flex-1 text-sm font-semibold text-neutral-base">
@@ -85,9 +94,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             aria-label={`View details about ${project.title}`}
           >
             <span>View Project Details</span>
-            <ArrowUpRight 
-              className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" 
-              aria-hidden="true" 
+            <ArrowUpRight
+              className="h-4 w-4 transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+              aria-hidden="true"
             />
           </Link>
         </footer>

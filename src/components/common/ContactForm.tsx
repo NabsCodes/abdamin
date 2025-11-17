@@ -87,7 +87,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={clsx(
-          "mx-auto w-full space-y-4 rounded-2xl border border-solid border-neutral-10/50 bg-[#fafbfe] p-6 md:max-w-md",
+          "mx-auto flex w-full flex-col justify-between gap-4 rounded-2xl border border-solid border-neutral-10/50 bg-[#fafbfe] p-6 md:max-w-md",
           className,
         )}
         noValidate

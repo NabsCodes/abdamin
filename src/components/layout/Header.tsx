@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { navInfo, socialLinks } from "@/utils/data";
-import { Building4, Call, Sms } from "iconsax-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { navInfo } from "@/utils/data";
+import { Building4, Call, Sms, Award } from "iconsax-react";
 
 const Header = () => {
   return (
@@ -24,16 +23,10 @@ const Header = () => {
           <p>{navInfo.address}</p>
         </div>
       </div>
-      <div className="flex space-x-4">
-        {socialLinks.map((link) => (
-          <NavLink
-            key={link.label}
-            to={link.url}
-            className="transition-colors duration-300 hover:text-primary-80"
-          >
-            <FontAwesomeIcon icon={link.icon} size="lg" />
-          </NavLink>
-        ))}
+      {/* Company Value Statement - Replaced social media links */}
+      <div className="flex items-center gap-2 text-sm">
+        <Award size="16" variant="Bold" className="text-secondary-base" />
+        <p className="font-semibold text-primary-base">Excellence Since 2000</p>
       </div>
     </header>
   );

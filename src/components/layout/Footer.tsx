@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Palette, Code } from "lucide-react";
-import { footerInfo, navItems, socialLinks, copyRight } from "@/utils/data";
+import { footerInfo, navItems, copyRight } from "@/utils/data";
 import AnimatedSection from "./AnimatedSection";
 import logoWebp from "@/assets/images/Logo-white.webp";
 import logoFallback from "@/assets/svg/Logo-white.svg";
@@ -94,22 +93,14 @@ const Footer = () => {
                   <ContactItem key={item.title} {...item} />
                 ))}
 
-                {/* Social Links */}
-                <div className="flex gap-4 text-neutral-10">
-                  {socialLinks.map((link) => (
-                    <NavLink
-                      key={link.label}
-                      to={link.url}
-                      className="transition-colors duration-300 hover:text-white"
-                      aria-label={`Visit our ${link.label} page`}
-                    >
-                      <FontAwesomeIcon
-                        icon={link.icon}
-                        size="lg"
-                        aria-hidden="true"
-                      />
-                    </NavLink>
-                  ))}
+                {/* Company Value - Replaced social media links */}
+                <div className="flex flex-col gap-2">
+                  <p className="text-sm font-semibold text-white md:text-base">
+                    Our Commitment
+                  </p>
+                  <div className="text-sm text-neutral-10 md:text-base">
+                    Excellence in every project since 2000
+                  </div>
                 </div>
               </div>
             </div>
