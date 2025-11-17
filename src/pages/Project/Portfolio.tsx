@@ -52,6 +52,33 @@ const Portfolio: React.FC = () => {
       />
       <AnimatedSection>
         <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Portfolio Introduction */}
+          <div className="mb-12 text-center">
+            <div className="mx-auto flex max-w-3xl flex-col gap-4">
+              <div className="flex items-center justify-center gap-3">
+                <div
+                  className="h-px w-12 bg-secondary-base md:w-16"
+                  aria-hidden="true"
+                />
+                <p className="text-sm font-semibold uppercase tracking-wider text-primary-40 md:text-base">
+                  Featured Work
+                </p>
+                <div
+                  className="h-px w-12 bg-secondary-base md:w-16"
+                  aria-hidden="true"
+                />
+              </div>
+              <h2 className="text-2xl font-bold text-neutral-base md:text-3xl">
+                Selected Projects Showcase
+              </h2>
+              <p className="text-sm leading-relaxed text-neutral-50 md:text-base">
+                A curated selection of our work across multiple sectors. With
+                260+ completed projects and 200+ satisfied clients since 2000,
+                these highlights demonstrate our commitment to excellence.
+              </p>
+            </div>
+          </div>
+
           <PortfolioBreadcrumb
             activeCategory={activeCategory}
             setActiveCategory={setActiveCategory}

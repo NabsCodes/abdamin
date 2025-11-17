@@ -1,6 +1,7 @@
 import React from "react";
 import Hero from "@/components/layout/Hero";
 import AnimatedSection from "@/components/layout/AnimatedSection";
+import RelatedItems from "@/components/common/RelatedItems";
 import { cn } from "@/lib/utils";
 
 // Define the structure for each service section
@@ -64,6 +65,13 @@ const ServicePage: React.FC<ServicePageProps> = ({
           ))}
         </section>
       </AnimatedSection>
+
+      {/* Related Services */}
+      <RelatedItems
+        currentServiceTitle={title}
+        type="service"
+        title="Related Services"
+      />
     </>
   );
 };

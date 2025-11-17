@@ -11,7 +11,7 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ icon, text, className }) => {
   return (
     <div
       className={clsx(
-        "group relative flex items-center gap-3 overflow-hidden rounded-xl border border-primary-30 bg-white px-4 py-3 transition-all duration-300 hover:border-secondary-base hover:bg-primary-10/30",
+        "group relative flex items-center gap-3 overflow-hidden rounded-xl border border-primary-30 bg-white px-4 py-3 transition-all duration-300 hover:border-secondary-base",
         className,
       )}
     >

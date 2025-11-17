@@ -17,19 +17,19 @@ const ServiceCard = ({ title, description, image, link }: ServiceCardProps) => {
       aria-label={`${title}: ${description}. Learn more about this service.`}
     >
       {/* Image with Overlay Content */}
-      <div className="relative h-[380px] overflow-hidden bg-neutral-20 md:h-[420px]">
+      <div className="relative h-[380px] overflow-hidden rounded-2xl bg-neutral-20 md:h-[420px]">
         {/* Background Image */}
         <OptimizedImage
           src={image}
           alt={`${title} service`}
-          className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-105"
+          className="h-full w-full rounded-2xl transition-transform duration-700 ease-out group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           width={600}
           height={420}
         />
 
         {/* Refined Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-neutral-base/95 via-neutral-base/50 to-neutral-base/10 transition-all duration-500 group-hover:from-neutral-base/90 group-hover:via-neutral-base/40" />
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-neutral-base/95 via-neutral-base/50 to-neutral-base/10 transition-all duration-500 group-hover:from-neutral-base/90 group-hover:via-neutral-base/40" />
 
         {/* Content Overlay */}
         <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">

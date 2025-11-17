@@ -4,6 +4,7 @@ import { projects } from "@/utils/projectData";
 import Hero from "@/components/layout/Hero";
 import SEO from "@/components/layout/SEO";
 import ProjectDetailsSection from "@/components/projects/ProjectDetailsSection";
+import RelatedItems from "@/components/common/RelatedItems";
 import {
   Carousel,
   CarouselContent,
@@ -98,6 +99,20 @@ const ProjectPage: React.FC = () => {
           </Carousel>
         </div>
       </section>
+
+      {/* Related Projects */}
+      <RelatedItems
+        items={projects
+          .filter((p) => p.id !== project.id)
+          .slice(0, 3)
+          .map((p) => ({
+            id: p.id,
+            title: p.title,
+            link: `/portfolio/${p.id}`,
+            type: "project" as const,
+          }))}
+        title="Related Projects"
+      />
     </>
   );
 };

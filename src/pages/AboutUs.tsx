@@ -5,6 +5,7 @@ import Bio from "@/components/common/Bio";
 import Mission from "@/components/common/CompanyOverview";
 import StatsAndFeatures from "@/components/common/StatsAndFeatures";
 import CompanyValues from "@/components/common/CompanyValues";
+import ServiceCoverage from "@/components/common/ServiceCoverage";
 import AnimatedSection from "@/components/layout/AnimatedSection";
 
 const AboutUs: React.FC = () => {
@@ -36,6 +37,7 @@ const AboutUs: React.FC = () => {
       <AnimatedSection>
         <CompanyValues />
       </AnimatedSection>
+      <ServiceCoverage />
     </>
   );
 };

@@ -5,6 +5,8 @@ import Services from "@/components/services/Services";
 import StatisticsSection from "@/components/common/StatisticsSection";
 import CompanyValues from "@/components/common/CompanyValues";
 import ProjectHome from "@/components/projects/ProjectHome";
+import Testimonials from "@/components/common/Testimonials";
+import FAQ from "@/components/common/FAQ";
 import AnimatedSection from "@/components/layout/AnimatedSection";
 
 const HomePage: React.FC = () => {
@@ -52,6 +54,12 @@ const HomePage: React.FC = () => {
       <CompanyValues />
       <AnimatedSection>
         <ProjectHome />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Testimonials />
+      </AnimatedSection>
+      <AnimatedSection>
+        <FAQ />
       </AnimatedSection>
     </>
   );

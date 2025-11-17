@@ -7,7 +7,7 @@ import AnimatedSection from "@/components/layout/AnimatedSection";
 
 const CompanyValues: React.FC = () => {
   return (
-    <section className="mx-auto flex max-w-8xl flex-col gap-16 px-4 pt-16 sm:px-6 lg:px-8">
+    <section className="mx-auto flex max-w-8xl flex-col gap-16 px-4 py-16 sm:px-6 lg:px-8">
       <HeadingSection
         title="Values"
         subtitle="Why Choose Us"

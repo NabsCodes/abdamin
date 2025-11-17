@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 const ProjectHome = () => {
   return (
-    <section className="mx-auto flex max-w-8xl flex-col gap-16 px-4 pt-16 sm:px-6 lg:px-8">
+    <section className="mx-auto flex max-w-8xl flex-col gap-16 px-4 py-16 sm:px-6 lg:px-8">
       <HeadingSection
         title="Projects"
         subtitle="Our Remarkable Projects Portfolio"
