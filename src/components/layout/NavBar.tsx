@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import logoWebp from "@/assets/images/Logo.webp";
 import logoFallback from "@/assets/svg/Logo.svg";
 import { CloseIcon, MenuIcon } from "@/components/ui/SvgIcons";
 import { navItems, socialLinks, copyRight, navInfo } from "@/utils/data";
@@ -60,21 +59,15 @@ const Navbar: React.FC = () => {
       >
         <div className="mx-auto flex max-w-8xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <NavLink to="/">
-            <picture>
-              <source
-                srcSet={`${logoWebp} 1x, ${logoWebp} 2x`}
-                type="image/webp"
-              />
-              <img
-                src={logoFallback}
-                alt="Abdamin International Limited logo"
-                width={160}
-                height={40}
-                className="h-auto w-28 sm:w-32 md:w-36 lg:w-40"
-                loading="eager"
-                decoding="async"
-              />
-            </picture>
+            <img
+              src={logoFallback}
+              alt="Abdamin International Limited logo"
+              width={160}
+              height={40}
+              className="h-auto w-28 sm:w-32 md:w-36 lg:w-40"
+              loading="eager"
+              decoding="async"
+            />
           </NavLink>
           <div className="hidden items-center gap-8 md:flex lg:gap-16">
             {navItems.slice(0, -2).map((item) => (

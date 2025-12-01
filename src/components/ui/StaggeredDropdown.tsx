@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Dispatch, SetStateAction, useState, useRef } from "react";
-import { IconType } from "react-icons";
+import type { IconType } from "react-icons";
 import { NavLink } from "react-router-dom";
 import useClickOutside from "@/hooks/useClickOutside";
 

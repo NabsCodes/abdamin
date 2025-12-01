@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import { Palette, Code } from "lucide-react";
 import { footerInfo, navItems, copyRight } from "@/utils/data";
 import AnimatedSection from "./AnimatedSection";
-import logoWebp from "@/assets/images/Logo-white.webp";
 import logoFallback from "@/assets/svg/Logo-white.svg";
 
 const ContactItem = ({
@@ -73,20 +72,14 @@ const Footer = () => {
             <div className="col-span-3">
               <div className="flex flex-col gap-4">
                 {/* Logo */}
-                <picture>
-                  <source
-                    srcSet={`${logoWebp} 1x, ${logoWebp} 2x`}
-                    type="image/webp"
-                  />
-                  <img
-                    src={logoFallback}
-                    alt="Abdamin International Limited Logo"
-                    width="160"
-                    height="40"
-                    className="h-auto w-28 sm:w-32 md:w-36 lg:w-40"
-                    loading="lazy"
-                  />
-                </picture>
+                <img
+                  src={logoFallback}
+                  alt="Abdamin International Limited Logo"
+                  width="160"
+                  height="40"
+                  className="h-auto w-28 sm:w-32 md:w-36 lg:w-40"
+                  loading="lazy"
+                />
 
                 {/* Contact Information */}
                 {contactInfo.map((item) => (

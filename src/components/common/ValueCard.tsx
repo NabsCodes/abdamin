@@ -1,6 +1,5 @@
 import React from "react";
 import clsx from "clsx";
-import OptimizedImage from "@/components/ui/OptimizedImage";
 
 interface ValueCardProps {
   iconSrc: string;
@@ -19,13 +18,12 @@ const ValueCard: React.FC<ValueCardProps> = ({
     <div
       className={clsx(className, "flex flex-col items-center justify-center")}
     >
-      <OptimizedImage
+      <img
         src={iconSrc}
         alt={`${title} icon - ${description}`}
         className="z-10 aspect-square w-16 translate-y-[20px] self-center object-contain"
         width={64}
         height={64}
-        priority={false}
       />
       <div className="flex h-[250px] flex-col items-center justify-center overflow-hidden rounded-xl border border-solid border-gray-200 bg-[#FAFBFE] px-4 py-6">
         <div className="flex flex-col gap-4 text-center">
